@@ -1,0 +1,41 @@
+.header {
+    height: 95vh;    /*95% of viewport height */
+
+    background-image: linear-gradient(to right bottom, /*changes color from top right to bottom left*/
+    rgba($color-primary-light, 0.8), /*  with colors(0.8 opacity)*/
+    rgba($color-primary-dark, 0.8)), 
+    url(../../img/hero.jpg);            //Image to be displayed over
+
+    background-size: cover;    /*fits the width of viewport*/
+    background-position: top;   /*image stays at top of viewport*/
+    position: relative; /* for children position reference */
+
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+
+    @include respond(phone) {
+      -webkit-clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
+      clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
+    }
+   &__logo-box {
+     position: absolute;
+     top: 4rem;
+     left: 4rem;
+   }
+
+   &__logo {
+    height: 3.5rem;
+   }
+
+   &__text-box {
+     position: absolute;
+     top: 40%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+     text-align: center;
+   }
+}
+
+  
+
+/* :link is a sudoclass, stylizes element on special condition*/
