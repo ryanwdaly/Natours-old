@@ -1,4 +1,4 @@
-const fs = require("fs");
+const fs = require('fs');
 
 const tourList = JSON.parse(
   fs.readFileSync(`${__dirname}/../dev-data/data/tours-simple.json`)
@@ -8,8 +8,8 @@ exports.checkID = (req, res, next, val) => {
   console.log(`Tour id is: ${val}`);
   if (req.params.id * 1 > tourList.length) {
     return res.status(404).json({
-      status: "fail",
-      message: "Invalid ID",
+      status: 'fail',
+      message: 'Invalid ID',
     });
   }
   next();
@@ -18,18 +18,18 @@ exports.checkID = (req, res, next, val) => {
 exports.checkBody = (req, res, next) => {
   if (!req.body.name || !req.body.price) {
     return res.status(400).json({
-      status: "fail", 
-      message: "no name and/or pice",
-    })
+      status: 'fail',
+      message: 'no name and/or pice',
+    });
   }
   next();
-}
+};
 
 ////////////////////////ROUTE HANDLERS///////////////////////////////
 // VIEW ALL TOURS
 exports.getAllTours = (req, res) => {
   res.status(200).json({
-    status: "success",
+    status: 'success',
     results: tourList.length,
     data: {
       tourList,
@@ -67,23 +67,23 @@ exports.createTour = (req, res) => {
     JSON.stringify(tourList),
     (err) => {
       res.status(201).json({
-        status: "success",
+        status: 'success',
         data: {
           tour: newTour,
         },
       });
     }
   );
-  res.send("done");
+  res.send('done');
 };
 
 ////////////////////////////////////////////////////////////////////
 // UPDATING WITH PATCH
 exports.updateTour = (req, res) => {
   res.status(200).json({
-    status: "success",
+    status: 'success',
     data: {
-      tour: "<Updated tour here...>",
+      tour: '<Updated tour here...>',
     },
   });
 };
@@ -92,7 +92,7 @@ exports.updateTour = (req, res) => {
 // DELETE
 exports.deleteTour = (req, res) => {
   res.status(204).json({
-    status: "success",
+    status: 'success',
     data: null,
   });
 };
