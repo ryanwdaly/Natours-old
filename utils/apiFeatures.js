@@ -20,7 +20,7 @@ class APIFeatures {
 
   sort() {
     // 2) Sorting
-    if (this.queryString) {
+    if (this.queryString.sort) { //sort is from query
       const sortBy = this.queryString.sort.split(',').join(' ');
       this.query = this.query.sort(sortBy);
     } else {
